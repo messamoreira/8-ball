@@ -95,9 +95,6 @@ function App() {
           Nova Pergunta
         </button>
 
-        <div className="pergunta-atual">
-          {pergunta && <p>Pergunta: {pergunta}</p>}
-        </div>
       </div>
     </div>
   );
