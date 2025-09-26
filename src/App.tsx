@@ -68,6 +68,8 @@ function App() {
 
   return (
     <AppContainer>
+      <div className="stars"></div>
+      <div className="twinkling"></div>
       <Container>
         <InputContainer>
           <PerguntaInput
