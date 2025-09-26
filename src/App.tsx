@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import MagicBall from './components/MagicBall';
+import Controls from './components/Controls';
+import Starfield from './components/Starfield';
+import { GlobalStyle, AppContainer, MainContainer } from './styles';
 
 const respostas = [
   "Sim, definitivamente.",
@@ -35,11 +39,9 @@ function App() {
       return;
     }
 
-    // Animação de agitação
     setBolaAnimada(true);
     setMostrandoResposta(false);
 
-    // Escolher resposta aleatória após 1 segundo
     setTimeout(() => {
       const respostaAleatoria = respostas[Math.floor(Math.random() * respostas.length)];
       setResposta(respostaAleatoria);
@@ -56,47 +58,26 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="container">
-        {/* Título removido conforme solicitado */}
-        <div className="input-container">
-          <input
-            type="text"
-            value={pergunta}
-            onChange={(e) => setPergunta(e.target.value)}
-            placeholder="Faça sua pergunta..."
-            className="pergunta-input"
-            disabled={bolaAnimada}
+    <>
+      <GlobalStyle />
+      <Starfield />
+      <AppContainer>
+        <MainContainer>
+          <Controls
+            pergunta={pergunta}
+            onPerguntaChange={setPergunta}
+            onPerguntaSubmit={fazerPergunta}
+            onReset={resetar}
+            isPensando={bolaAnimada}
           />
-          <button 
-            onClick={fazerPergunta} 
-            className="pergunta-btn"
-            disabled={bolaAnimada}
-          >
-            {bolaAnimada ? 'Pensando...' : 'Perguntar'}
-          </button>
-        </div>
-
-        <div className={`bola8 ${bolaAnimada ? 'animada' : ''}`}>
-          <div className="bola-externa">
-            <div className="bola-interna">
-              {mostrandoResposta ? (
-                <div className="resposta">
-                  <span>{resposta}</span>
-                </div>
-              ) : (
-                <div className="numero8">8</div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <button onClick={resetar} className="reset-btn">
-          Nova Pergunta
-        </button>
-
-      </div>
-    </div>
+          <MagicBall
+            animada={bolaAnimada}
+            mostrandoResposta={mostrandoResposta}
+            resposta={resposta}
+          />
+        </MainContainer>
+      </AppContainer>
+    </>
   );
 }
 
