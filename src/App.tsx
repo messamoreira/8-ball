@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MagicBall from './components/MagicBall';
 import Controls from './components/Controls';
 import Starfield from './components/Starfield';
@@ -32,6 +32,17 @@ function App() {
   const [resposta, setResposta] = useState('');
   const [mostrandoResposta, setMostrandoResposta] = useState(false);
   const [bolaAnimada, setBolaAnimada] = useState(false);
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setCoords({ x: event.clientX, y: event.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   const fazerPergunta = () => {
     if (!pergunta.trim()) {
@@ -60,7 +71,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Starfield />
+      <Starfield coords={coords} />
       <AppContainer>
         <MainContainer>
           <Controls

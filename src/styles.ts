@@ -82,6 +82,15 @@ export const Twinkling = styled.div`
   z-index: 1;
 `;
 
+export const ParallaxLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-out;
+`;
+
 
 // Main App Container
 export const AppContainer = styled.div`
@@ -140,25 +149,27 @@ export const PerguntaInput = styled.input`
 export const Botao = styled.button`
   padding: 12px 24px;
   font-size: 16px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 25px;
-  background: linear-gradient(135deg, #222 0%, #444 100%);
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
 
   &:hover:not(:disabled) {
-    background: linear-gradient(135deg, #111 0%, #222 100%);
+    background-color: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0,0,0,0.9);
   }
 
   &:disabled {
-    background: #444;
+    background-color: rgba(255, 255, 255, 0.05);
     color: #888;
     cursor: not-allowed;
     transform: none;
+    backdrop-filter: none;
   }
 `;
 
