@@ -1,9 +1,26 @@
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
+// Helper function to generate a star layer
+function generateStars(count: number, size: string) {
+  let boxShadow = '';
+  // The viewport is 100vw and 100vh, but to make the stars spread out more
+  // and appear more random, we'll generate them in a 2000x2000px area
+  // and let the animation handle the movement.
+  for (let i = 0; i < count; i++) {
+    boxShadow += `${Math.floor(Math.random() * 2000)}px ${Math.floor(Math.random() * 2000)}px ${size} ${size} #fff,`;
+  }
+  return boxShadow.slice(0, -1); // Remove the trailing comma
+}
+
+
 // Keyframes for animations
-const moveTwinkBack = keyframes`
-  from { background-position: 0 0; }
-  to { background-position: -10000px 5000px; }
+const animateStars = keyframes`
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
 `;
 
 const agitar = keyframes`
@@ -40,16 +57,16 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 // Starfield Background Components
+// We create multiple layers of stars for a parallax effect.
 export const Stars = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: ${generateStars(700, '1px')};
+  animation: ${animateStars} 150s linear infinite;
   z-index: 0;
 `;
 
@@ -57,14 +74,12 @@ export const Twinkling = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  background: transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: ${generateStars(200, '2px')};
+  animation: ${animateStars} 100s linear infinite;
   z-index: 1;
-  animation: ${moveTwinkBack} 200s linear infinite;
 `;
 
 
