@@ -1,4 +1,18 @@
 import React, { useState } from 'react';
+import StarryBackground from './components/StarryBackground';
+import {
+  AppContainer,
+  Container,
+  InputContainer,
+  PerguntaInput,
+  Button,
+  ResetButton,
+  Bola8Container,
+  BolaExterna,
+  BolaInterna,
+  Numero8,
+  Resposta,
+} from './components/Styled';
 
 const respostas = [
   "Sim, definitivamente.",
@@ -35,11 +49,9 @@ function App() {
       return;
     }
 
-    // Animação de agitação
     setBolaAnimada(true);
     setMostrandoResposta(false);
 
-    // Escolher resposta aleatória após 1 segundo
     setTimeout(() => {
       const respostaAleatoria = respostas[Math.floor(Math.random() * respostas.length)];
       setResposta(respostaAleatoria);
@@ -56,47 +68,45 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="container">
-        {/* Título removido conforme solicitado */}
-        <div className="input-container">
-          <input
+    <AppContainer>
+      <StarryBackground />
+      <Container>
+        <InputContainer>
+          <PerguntaInput
             type="text"
             value={pergunta}
             onChange={(e) => setPergunta(e.target.value)}
             placeholder="Faça sua pergunta..."
-            className="pergunta-input"
             disabled={bolaAnimada}
           />
-          <button 
-            onClick={fazerPergunta} 
-            className="pergunta-btn"
+          <Button
+            onClick={fazerPergunta}
             disabled={bolaAnimada}
           >
             {bolaAnimada ? 'Pensando...' : 'Perguntar'}
-          </button>
-        </div>
+          </Button>
+        </InputContainer>
 
-        <div className={`bola8 ${bolaAnimada ? 'animada' : ''}`}>
-          <div className="bola-externa">
-            <div className="bola-interna">
+        <Bola8Container $animada={bolaAnimada}>
+          <BolaExterna className="bola-externa">
+            <BolaInterna>
               {mostrandoResposta ? (
-                <div className="resposta">
+                <Resposta>
                   <span>{resposta}</span>
-                </div>
+                </Resposta>
               ) : (
-                <div className="numero8">8</div>
+                <Numero8>8</Numero8>
               )}
-            </div>
-          </div>
-        </div>
+            </BolaInterna>
+          </BolaExterna>
+        </Bola8Container>
 
-        <button onClick={resetar} className="reset-btn">
+        <ResetButton onClick={resetar}>
           Nova Pergunta
-        </button>
+        </ResetButton>
 
-      </div>
-    </div>
+      </Container>
+    </AppContainer>
   );
 }
 
