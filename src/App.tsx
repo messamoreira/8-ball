@@ -38,9 +38,19 @@ function App() {
     const handleMouseMove = (event: MouseEvent) => {
       setCoords({ x: event.clientX, y: event.clientY });
     };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length > 0) {
+        setCoords({ x: event.touches[0].clientX, y: event.touches[0].clientY });
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
 

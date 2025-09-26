@@ -58,6 +58,8 @@ export const GlobalStyle = createGlobalStyle`
 
 // Starfield Background Components
 // We create multiple layers of stars for a parallax effect.
+// By adding an ::after pseudo-element that is a copy of the stars
+// and placing it directly below the original, we create a seamless loop.
 export const Stars = styled.div`
   position: absolute;
   top: 0;
@@ -68,6 +70,16 @@ export const Stars = styled.div`
   box-shadow: ${generateStars(700, '1px')};
   animation: ${animateStars} 150s linear infinite;
   z-index: 0;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: ${generateStars(700, '1px')};
+  }
 `;
 
 export const Twinkling = styled.div`
@@ -80,6 +92,16 @@ export const Twinkling = styled.div`
   box-shadow: ${generateStars(200, '2px')};
   animation: ${animateStars} 100s linear infinite;
   z-index: 1;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: ${generateStars(200, '2px')};
+  }
 `;
 
 export const ParallaxLayer = styled.div`
@@ -149,23 +171,23 @@ export const PerguntaInput = styled.input`
 export const Botao = styled.button`
   padding: 12px 24px;
   font-size: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
   border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 
   &:hover:not(:disabled) {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0,0,0,0.9);
   }
 
   &:disabled {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.02);
     color: #888;
     cursor: not-allowed;
     transform: none;
