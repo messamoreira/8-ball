@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# Bola 8 Mágica em React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao projeto Bola 8 Mágica! Esta é uma aplicação web interativa que simula a clássica Bola 8 Mágica. Faça uma pergunta de "sim" ou "não", e a bola mística revelará uma resposta.
 
-## Available Scripts
+Este projeto foi desenvolvido com o objetivo de criar uma experiência de usuário limpa e agradável, com componentes estilizados de forma moderna e uma interface minimalista.
 
-In the project directory, you can run:
+## ✨ Funcionalidades
 
-### `npm start`
+- **Interface Intuitiva:** Um campo de texto para você digitar sua pergunta.
+- **Animação Interativa:** Ao perguntar, a Bola 8 treme antes de revelar a resposta.
+- **Respostas Aleatórias:** Um conjunto de 20 respostas clássicas da Bola 8 Mágica.
+- **Design Responsivo:** A aplicação se adapta bem a diferentes tamanhos de tela.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Tecnologias Utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+O projeto foi construído com tecnologias web modernas, focando em boas práticas e manutenibilidade:
 
-### `npm test`
+- **React:** Uma biblioteca JavaScript para construir interfaces de usuário.
+- **TypeScript:** Um superset do JavaScript que adiciona tipagem estática ao código, tornando-o mais robusto.
+- **Styled-Components:** Uma biblioteca para estilizar componentes React de forma isolada e dinâmica, utilizando "CSS-in-JS".
+- **Jest & React Testing Library:** Para garantir que os componentes funcionem como esperado.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Como Executar o Projeto
 
-### `npm run build`
+Para executar este projeto em sua máquina local, siga os passos abaixo.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Node.js](https://nodejs.org/) (versão 14 ou superior)
+- [npm](https://www.npmjs.com/) (geralmente vem com o Node.js)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone o Repositório
 
-### `npm run eject`
+Primeiro, clone este repositório para a sua máquina.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd <NOME_DA_PASTA>
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Instale as Dependências
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Dentro da pasta do projeto, execute o seguinte comando para instalar todas as dependências necessárias:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm install
+```
 
-## Learn More
+### 3. Inicie o Servidor de Desenvolvimento
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Após a instalação, você pode iniciar a aplicação em modo de desenvolvimento.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
+
+Este comando abrirá uma nova aba em seu navegador com a aplicação rodando em `http://localhost:3000`. O servidor recarregará automaticamente a página sempre que você fizer alterações no código.
+
+### 4. Execute os Testes
+
+Para verificar se tudo está funcionando corretamente, você pode rodar os testes automatizados:
+
+```bash
+npm test
+```
+
+Este comando executará os testes e mostrará os resultados no console.
+
+---
+
+Aproveite a sua Bola 8 Mágica! 🎱✨
