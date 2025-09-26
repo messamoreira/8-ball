@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import StarryBackground from './components/StarryBackground';
 import {
   AppContainer,
   Container,
@@ -69,7 +68,6 @@ function App() {
 
   return (
     <AppContainer>
-      <StarryBackground />
       <Container>
         <InputContainer>
           <PerguntaInput
